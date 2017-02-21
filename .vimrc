@@ -33,11 +33,11 @@ set rtp+=$GOROOT/misc/vim
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 set cul "高亮光标所在行
-set cuc
+"set cuc
 set shortmess=atI   " 启动的时候不显示那个援助乌干达儿童的提示  
 set go=             " 不要图形按钮  
-"color desert     " 设置背景主题  
-color ron     " 设置背景主题  
+color desert     " 设置背景主题  
+"color ron     " 设置背景主题  
 "color torte     " 设置背景主题  
 "set guifont=Courier_New:h10:cANSI   " 设置字体  
 "autocmd InsertLeave * se nocul  " 用浅色高亮当前行  
@@ -214,14 +214,16 @@ func! CompileRunGcc()
 		:!time bash %
 	elseif &filetype == 'python'
 		exec "!time python2.7 %"
-    elseif &filetype == 'html'
-        exec "!firefox % &"
-    elseif &filetype == 'go'
-"        exec "!go build %<"
-        exec "!time go run %"
-    elseif &filetype == 'mkd'
-        exec "!~/.vim/markdown.pl % > %.html &"
-        exec "!firefox %.html &"
+	elseif &filetype == 'py'
+		exec "!time python %"
+        elseif &filetype == 'html'
+	       exec "!firefox % &"
+        elseif &filetype == 'go'
+"        	exec "!go build %<"
+		exec "!time go run %"
+    	elseif &filetype == 'mkd'
+        	exec "!~/.vim/markdown.pl % > %.html &"
+        	exec "!firefox %.html &"
 	endif
 endfunc
 "C,C++的调试
