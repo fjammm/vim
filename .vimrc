@@ -213,17 +213,19 @@ func! CompileRunGcc()
 	elseif &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'python'
+        exec "!time source ~/tensorflow/bin/activate"
 		exec "!time python2.7 %"
 	elseif &filetype == 'py'
+        exec "!time source ~/tensorflow/bin/activate"
 		exec "!time python %"
-        elseif &filetype == 'html'
-	       exec "!firefox % &"
-        elseif &filetype == 'go'
-"        	exec "!go build %<"
-		exec "!time go run %"
-    	elseif &filetype == 'mkd'
-        	exec "!~/.vim/markdown.pl % > %.html &"
-        	exec "!firefox %.html &"
+    elseif &filetype == 'html'
+	    exec "!firefox % &"
+    elseif &filetype == 'go'
+        exec "!go build %<"
+	    exec "!time go run %"
+    elseif &filetype == 'mkd'
+        exec "!~/.vim/markdown.pl % > %.html &"
+        exec "!firefox %.html &"
 	endif
 endfunc
 "C,C++的调试
